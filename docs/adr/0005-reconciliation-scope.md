@@ -1,0 +1,22 @@
+# ADR 0005: Reconciliation & settlement-hardening scope
+
+## Status
+Accepted for this build.
+
+## Context
+PRD §8.5/§8.6 calls for a periodic reconciliation job that cross-checks Insureflow's state against Squad's own transaction/transfer listings, to catch a missed or out-of-order webhook, and states that "transfer status is verified via Squad's re-query endpoint before being marked final." Neither Squad's `POST /payout/requery` nor `GET /payout/list` endpoints had been integrated yet (Phase 4/5 deliberately deferred them — see the prior docstring on `SquadClient`). No real Squad sandbox credentials are available in this environment, so the exact response shape of both endpoints is taken from public Squad API documentation rather than a live spike (unlike Phase 4's webhook signature, which was confirmed against a live sandbox call) — treat the field names in `app/integrations/squad/schemas.py`'s `TransferStatusResult` as best-effort until verified against a real sandbox response, the same caution already applied to the kobo-rounding remainder rule (`docs/adr/0001-kobo-rounding.md`).
+
+## Decisions
+
+1. **Collection-side reconciliation (`reconciliation_service.reconcile_transactions`) is fully automatic.** A `Payment`/`PaymentBatch` stuck in `initiated` longer than `Settings.reconciliation_stale_after_minutes` is re-queried via the same `get_dynamic_virtual_account_transaction` call the webhook path uses, and resolved through the exact same entry points (`payment_service.resolve_payment_outcome` / `bulk_payment_service.resolve_batch_outcome`) — never a separate write path. This is safe to fully automate because those entry points are already idempotent (a terminal-state row is returned unchanged) and are the same code already trusted to flip state from a webhook delivery.
+
+2. **`settlement_service.settle_payment` now requeries every transfer it initiates, immediately, before recording a final status** — closing the gap where the old code trusted `initiate_transfer`'s own (often ambiguous) response field as final. A still-ambiguous requery result is recorded as `SettlementPayoutStatus.PENDING` (the column already existed for exactly this, unused until now) rather than guessed into success or failure.
+
+3. **Settlement-side reconciliation (`reconciliation_service.reconcile_transfers`) is automatic only for resolving a `PENDING` payout** to whatever terminal status Squad's `GET /payout/list` reports for it. **It never rewrites an already-terminal payout.** If Squad's listing disagrees with a payout we already marked `success` or `failed` (e.g. a bank-side reversal surfacing after the fact, or a transfer that actually succeeded despite our own attempt erroring), the discrepancy is only audit-logged (`settlement_payout.reconciliation_mismatch`) for human review. Auto-correcting would mean posting a reversing ledger entry against money already recorded as settled/failed — a real accounting decision (who absorbs a late reversal, how it's clawed back from the insurer) that needs finance sign-off, exactly the posture already taken for the kobo-rounding remainder. This phase deliberately stops at "flag for a human," not "silently fix the books."
+
+4. **`retry_failed_settlement` is an explicit, human-triggered action** (`POST /settlements/{payout_id}/retry`, restricted to Insureflow Admin via the new `RETRY_SETTLEMENT_PAYOUT` permission), not something reconciliation calls automatically. It always mints a fresh `squad_transfer_ref` and chains `previous_attempt_id`/`attempt_number` back to the attempt being retried — a failed reference is never reused (CLAUDE.md). Reconciliation's job is to detect and flag, not to decide on its own that a failed payout should be retried.
+
+## Consequences
+- A `PENDING` `SettlementPayout` is now a real, reachable state (previously the success path always wrote `SUCCESS` synchronously), so anything reading `SettlementPayout.status` must treat `pending` as non-terminal.
+- `reconcile_transfers` paginates Squad's entire transfer list every run rather than querying per-reference — simpler than tracking a high-water mark, acceptable at current volume; revisit if `GET /payout/list` page count becomes a real cost.
+- Both reconciliation jobs are beat-scheduled every 30 minutes (`Settings.reconciliation_stale_after_minutes` / `reconciliation_transfer_list_page_size` control the knobs), mirroring the existing `installments.flag_overdue` pattern — synchronous service calls inside a thin Celery task wrapper, not a separate async worker model.
