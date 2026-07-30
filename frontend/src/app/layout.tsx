@@ -17,6 +17,7 @@ const sora = Sora({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://insureflowapp.tech"),
   title: "Insureflow",
   description: "Premium collection and settlement dashboard for Insureflow.",
 };
