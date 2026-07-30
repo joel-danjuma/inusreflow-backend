@@ -51,6 +51,11 @@ target-version = "py312"
 [tool.ruff.lint]
 select = ["E", "F", "I", "UP", "B"]
 
+[tool.ruff.lint.per-file-ignores]
+# Hand-aligned tuple tables for readability -- reformatting to 100 cols would
+# destroy the column alignment that's the whole point of this layout.
+"scripts/generate_api_docs.py" = ["E501"]
+
 [tool.mypy]
 python_version = "3.12"
 strict = true
