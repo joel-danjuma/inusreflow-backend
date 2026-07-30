@@ -1,0 +1,42 @@
+[
+  {
+    "sheet": 1,
+    "components": [
+      "Alert",
+      "Badge",
+      "Button",
+      "ChangePasswordForm",
+      "CopyableToken",
+      "EmptyState",
+      "Input",
+      "InstallmentStatusBadge",
+      "LoginForm",
+      "LogoutButton",
+      "MaskedField",
+      "Modal",
+      "Money",
+      "MonthlyTrendsChart",
+      "OnboardingStatusBadge",
+      "PaymentRemindersBanner"
+    ]
+  },
+  {
+    "sheet": 2,
+    "components": [
+      "PaymentStatusBadge",
+      "PolicyStatusBadge",
+      "ReminderStatusBadge",
+      "SettlementPayoutStatusBadge",
+      "StatCard",
+      "StateDiff",
+      "Table",
+      "TableBody",
+      "TableCell",
+      "TableHead",
+      "TableHeaderCell",
+      "TableRow",
+      "Textarea",
+      "Topbar"
+    ]
+  }
+]

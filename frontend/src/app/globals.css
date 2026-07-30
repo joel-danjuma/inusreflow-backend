@@ -1,0 +1,265 @@
+@import "tailwindcss";
+
+/*
+ * Insureflow Design System (claude.ai/design project 940d93f3) — light theme.
+ *
+ * Brand:      #F97316  orange (hover #EA580C, press #C2410C, soft tint #FFF7ED)
+ * Ink (text): #112231  deep navy, never pure black
+ * Canvas:     #ffffff  page/card surface; #f5f6f8 soft/page-recess surface
+ * Display face: Sora (headlines, big stat numbers) · Body face: Inter (everything else)
+ * Shape: full-pill buttons/badges, 16px cards/inputs, 20px modals
+ */
+:root {
+  /* Neutral backgrounds -- canvas (white) for cards/panels/topbar, canvas-soft
+     (cool light gray) for page background and recessed panels. */
+  --color-neutral-primary-soft: #ffffff;
+  --color-neutral-primary: #ffffff;
+  --color-neutral-primary-medium: #ffffff;
+  --color-neutral-primary-strong: #eef0f2;       /* canvas-sunk -- hover/recessed within a white card */
+  --color-neutral-secondary-soft: #f5f6f8;       /* canvas-soft -- page background */
+  --color-neutral-secondary: #f5f6f8;
+  --color-neutral-secondary-medium: #ffffff;     /* input fill sits on white, border carries the shape */
+  --color-neutral-secondary-strong: #e4e8ec;
+  --color-neutral-tertiary-soft: #f5f6f8;
+  --color-neutral-tertiary: #c7ced4;
+  --color-neutral-tertiary-medium: #eef0f2;
+  --color-neutral-quaternary: #c7ced4;
+  --color-quaternary-medium: #8a96a0;
+  --color-gray: #8a96a0;
+
+  /* Brand (orange) */
+  --color-brand-softer: #FFF7ED;
+  --color-brand-soft: #FFF7ED;
+  --color-brand: #F97316;
+  --color-brand-medium: rgba(249, 115, 22, 0.3);  /* focus-ring tint */
+  --color-brand-strong: #EA580C;                   /* hover */
+  --color-brand-press: #C2410C;
+
+  /* Status -- soft chip = soft bg + ink-tone text + solid dot (readme.md) */
+  --color-success-soft: #e7f6ee;
+  --color-success: #2f9e5f;
+  --color-success-medium: #e7f6ee;
+  --color-success-strong: #146c3d;                /* success-ink -- text-safe tone */
+  --color-danger-soft: #ffe7e9;
+  --color-danger: #e5323f;
+  --color-danger-medium: #ffe7e9;
+  --color-danger-strong: #b21d27;                 /* danger-ink */
+  --color-warning-soft: #fdf3d6;
+  --color-warning: #e0a417;
+  --color-warning-medium: #fdf3d6;
+  --color-warning-strong: #8a6412;                /* warning-ink */
+  --color-info-soft: #e0f2f2;
+  --color-info: #0f8a8a;
+  --color-info-strong: #0b6a6a;                   /* info-ink */
+  --color-processing-soft: #fff0e4;
+  --color-processing: #ff8a3d;
+  --color-processing-strong: #a44a12;             /* processing-ink */
+
+  /* Illustration accent rainbow -- stat-card icon tints only, never UI chrome
+     (readme.md). Distinct from the semantic status set above even where the
+     hue overlaps (accent-teal == info, accent-orange == processing). */
+  --color-accent-teal: #0f8a8a;
+  --color-accent-green: #3fb871;
+  --color-accent-yellow: #f4c430;
+  --color-accent-orange: #ff8a3d;
+  --color-accent-pink: #ff8fa3;
+
+  /* Utility */
+  --color-dark: #112231;                          /* ink */
+  --color-dark-strong: #1f3244;                   /* ink-soft -- hover tone for dark-bg buttons */
+  --color-disabled: #eef0f2;
+
+  /* Text -- deep navy ladder, never pure black */
+  --color-white: #ffffff;
+  --color-black: #112231;
+  --color-heading: #112231;                       /* ink */
+  --color-body: #5c6b78;
+  --color-body-subtle: #8a96a0;                   /* body-mid */
+  --color-fg-brand-subtle: #F97316;
+  --color-fg-brand: #F97316;
+  --color-fg-brand-strong: #EA580C;
+  --color-fg-success: #146c3d;
+  --color-fg-success-strong: #146c3d;
+  --color-fg-danger: #b21d27;
+  --color-fg-danger-strong: #b21d27;
+  --color-fg-warning: #8a6412;
+  --color-fg-disabled: #8a96a0;
+
+  /* Borders */
+  --color-border-buffer: #f5f6f8;
+  --color-border-muted: #e4e8ec;
+  --color-border-light: #e4e8ec;
+  --color-border-light-medium: #c7ced4;
+  --color-border-default-subtle: #e4e8ec;
+  --color-border-default: #e4e8ec;                /* line */
+  --color-border-default-medium: #c7ced4;         /* line-strong */
+  --color-border-default-strong: #c7ced4;
+  --color-border-success-subtle: rgba(47, 158, 95, 0.3);
+  --color-border-success: #2f9e5f;
+  --color-border-danger-subtle: rgba(229, 50, 63, 0.3);
+  --color-border-danger: #e5323f;
+  --color-border-warning-subtle: rgba(224, 164, 23, 0.3);
+  --color-border-warning: #e0a417;
+  --color-border-brand-subtle: rgba(249, 115, 22, 0.3);
+  --color-border-brand-light: #EA580C;
+  --color-border-brand: #F97316;
+
+  /* Button sheen -- retired with the flat design language below (kept as
+     no-op tokens so nothing referencing them errors). */
+  --color-1-400: transparent;
+  --color-1-700: transparent;
+
+  /* Radius -- 16px is the brand's canonical card/input radius; badges/chips
+     and buttons are full pills. */
+  --radius-base: 16px;
+  --radius-default: 9999px;                       /* chips/badges -- pill, not 10px */
+  --radius-sm: 8px;
+  --radius-lg: 20px;                              /* modals */
+  --radius-full: 9999px;
+
+  /* Shadows -- soft, navy-tinted; depth comes from surface contrast + hairlines
+     first (readme.md), shadow is a light accent, not the primary depth cue. */
+  --shadow-2xs: 0 1px rgba(17, 34, 49, 0.04);
+  --shadow-xs: 0 1px 2px rgba(17, 34, 49, 0.06);
+  --shadow-sm: 0 1px 2px rgba(17, 34, 49, 0.06), 0 1px 1px rgba(17, 34, 49, 0.04);
+  --shadow-md: 0 6px 20px rgba(17, 34, 49, 0.1), 0 2px 6px rgba(17, 34, 49, 0.06);
+  --shadow-lg: 0 24px 60px rgba(17, 34, 49, 0.2), 0 8px 20px rgba(17, 34, 49, 0.1);
+  --shadow-xl: 0 32px 80px rgba(17, 34, 49, 0.24), 0 12px 28px rgba(17, 34, 49, 0.12);
+  --shadow-2xl: 0 40px 100px rgba(17, 34, 49, 0.3);
+  --shadow-focus: 0 0 0 3px rgba(249, 115, 22, 0.3);
+}
+
+@theme inline {
+  --color-neutral-primary-soft: var(--color-neutral-primary-soft);
+  --color-neutral-primary: var(--color-neutral-primary);
+  --color-neutral-primary-medium: var(--color-neutral-primary-medium);
+  --color-neutral-primary-strong: var(--color-neutral-primary-strong);
+  --color-neutral-secondary-soft: var(--color-neutral-secondary-soft);
+  --color-neutral-secondary: var(--color-neutral-secondary);
+  --color-neutral-secondary-medium: var(--color-neutral-secondary-medium);
+  --color-neutral-secondary-strong: var(--color-neutral-secondary-strong);
+  --color-neutral-tertiary-soft: var(--color-neutral-tertiary-soft);
+  --color-neutral-tertiary: var(--color-neutral-tertiary);
+  --color-neutral-tertiary-medium: var(--color-neutral-tertiary-medium);
+  --color-neutral-quaternary: var(--color-neutral-quaternary);
+  --color-quaternary-medium: var(--color-quaternary-medium);
+  --color-gray: var(--color-gray);
+
+  --color-brand-softer: var(--color-brand-softer);
+  --color-brand-soft: var(--color-brand-soft);
+  --color-brand: var(--color-brand);
+  --color-brand-medium: var(--color-brand-medium);
+  --color-brand-strong: var(--color-brand-strong);
+  --color-brand-press: var(--color-brand-press);
+
+  --color-success-soft: var(--color-success-soft);
+  --color-success: var(--color-success);
+  --color-success-medium: var(--color-success-medium);
+  --color-success-strong: var(--color-success-strong);
+  --color-danger-soft: var(--color-danger-soft);
+  --color-danger: var(--color-danger);
+  --color-danger-medium: var(--color-danger-medium);
+  --color-danger-strong: var(--color-danger-strong);
+  --color-warning-soft: var(--color-warning-soft);
+  --color-warning: var(--color-warning);
+  --color-warning-medium: var(--color-warning-medium);
+  --color-warning-strong: var(--color-warning-strong);
+  --color-info-soft: var(--color-info-soft);
+  --color-info: var(--color-info);
+  --color-info-strong: var(--color-info-strong);
+  --color-processing-soft: var(--color-processing-soft);
+  --color-processing: var(--color-processing);
+  --color-processing-strong: var(--color-processing-strong);
+
+  --color-accent-teal: var(--color-accent-teal);
+  --color-accent-green: var(--color-accent-green);
+  --color-accent-yellow: var(--color-accent-yellow);
+  --color-accent-orange: var(--color-accent-orange);
+  --color-accent-pink: var(--color-accent-pink);
+
+  --color-dark: var(--color-dark);
+  --color-dark-strong: var(--color-dark-strong);
+  --color-disabled: var(--color-disabled);
+
+  --color-white: var(--color-white);
+  --color-black: var(--color-black);
+  --color-heading: var(--color-heading);
+  --color-body: var(--color-body);
+  --color-body-subtle: var(--color-body-subtle);
+  --color-fg-brand-subtle: var(--color-fg-brand-subtle);
+  --color-fg-brand: var(--color-fg-brand);
+  --color-fg-brand-strong: var(--color-fg-brand-strong);
+  --color-fg-success: var(--color-fg-success);
+  --color-fg-success-strong: var(--color-fg-success-strong);
+  --color-fg-danger: var(--color-fg-danger);
+  --color-fg-danger-strong: var(--color-fg-danger-strong);
+  --color-fg-warning: var(--color-fg-warning);
+  --color-fg-disabled: var(--color-fg-disabled);
+
+  --color-border-buffer: var(--color-border-buffer);
+  --color-border-muted: var(--color-border-muted);
+  --color-border-light: var(--color-border-light);
+  --color-border-light-medium: var(--color-border-light-medium);
+  --color-border-default-subtle: var(--color-border-default-subtle);
+  --color-border-default: var(--color-border-default);
+  --color-border-default-medium: var(--color-border-default-medium);
+  --color-border-default-strong: var(--color-border-default-strong);
+  --color-border-success-subtle: var(--color-border-success-subtle);
+  --color-border-success: var(--color-border-success);
+  --color-border-danger-subtle: var(--color-border-danger-subtle);
+  --color-border-danger: var(--color-border-danger);
+  --color-border-warning-subtle: var(--color-border-warning-subtle);
+  --color-border-warning: var(--color-border-warning);
+  --color-border-brand-subtle: var(--color-border-brand-subtle);
+  --color-border-brand-light: var(--color-border-brand-light);
+  --color-border-brand: var(--color-border-brand);
+
+  --radius-base: var(--radius-base);
+  --radius-default: var(--radius-default);
+  --radius-sm: var(--radius-sm);
+  --radius-lg: var(--radius-lg);
+  --radius-full: var(--radius-full);
+
+  --shadow-2xs: var(--shadow-2xs);
+  --shadow-xs: var(--shadow-xs);
+  --shadow-sm: var(--shadow-sm);
+  --shadow-md: var(--shadow-md);
+  --shadow-lg: var(--shadow-lg);
+  --shadow-xl: var(--shadow-xl);
+  --shadow-2xl: var(--shadow-2xl);
+  --shadow-focus: var(--shadow-focus);
+
+  /* Two-face type system: Sora for display headlines + big stat numbers,
+     Inter for everything else (sub-displays, body, labels, buttons, tables). */
+  --font-sans: var(--font-inter);
+  --font-display: var(--font-sora), var(--font-inter), system-ui, sans-serif;
+}
+
+/* @layer base so these lose to any Tailwind utility (text-white, etc.) --
+   unlayered rules always beat @layer utilities regardless of specificity,
+   which silently broke text-white on colored buttons/headings before this
+   was layered. */
+@layer base {
+  body {
+    background: var(--color-neutral-secondary-soft);
+    color: var(--color-body);
+    font-family: var(--font-sans), ui-sans-serif, system-ui, -apple-system, sans-serif;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    color: var(--color-heading);
+    font-weight: 600;
+  }
+
+  a {
+    color: var(--color-fg-brand);
+  }
+  a:hover {
+    color: var(--color-fg-brand-strong);
+  }
+}

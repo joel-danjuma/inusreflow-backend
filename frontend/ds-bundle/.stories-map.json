@@ -1,0 +1,252 @@
+{
+  "global": "Insureflow",
+  "pkg": "frontend",
+  "pkgDir": "/Users/joeldanjuma/Desktop/Insureflow_v1/frontend",
+  "extraEntries": [],
+  "exported": [],
+  "storybookStatic": null,
+  "keyRecipe": 7,
+  "cfgSliceGlobal": "a139d95ad8ab0a8ba08b44a258c54602e36090304087f48fe923c61aa5a8ae08",
+  "components": [
+    {
+      "name": "Alert",
+      "group": "general",
+      "srcSha": null,
+      "sourceKey": "27418f36706c1303",
+      "cfgSlice": "5ff899b099eb6923833804cda955efdd69101524bec86f67dac5537cd81802e8",
+      "stories": []
+    },
+    {
+      "name": "Badge",
+      "group": "general",
+      "srcSha": null,
+      "sourceKey": "f96af139ff4b227c",
+      "cfgSlice": "5ff899b099eb6923833804cda955efdd69101524bec86f67dac5537cd81802e8",
+      "stories": []
+    },
+    {
+      "name": "Button",
+      "group": "general",
+      "srcSha": null,
+      "sourceKey": "b960e50919d7a9c8",
+      "cfgSlice": "5ff899b099eb6923833804cda955efdd69101524bec86f67dac5537cd81802e8",
+      "stories": []
+    },
+    {
+      "name": "ChangePasswordForm",
+      "group": "forms",
+      "srcSha": null,
+      "sourceKey": "68ae1d69021203b6",
+      "cfgSlice": "5ff899b099eb6923833804cda955efdd69101524bec86f67dac5537cd81802e8",
+      "stories": []
+    },
+    {
+      "name": "CopyableToken",
+      "group": "general",
+      "srcSha": null,
+      "sourceKey": "c52e2cde643c3216",
+      "cfgSlice": "5ff899b099eb6923833804cda955efdd69101524bec86f67dac5537cd81802e8",
+      "stories": []
+    },
+    {
+      "name": "EmptyState",
+      "group": "general",
+      "srcSha": null,
+      "sourceKey": "b7e26b92bd7769d0",
+      "cfgSlice": "5ff899b099eb6923833804cda955efdd69101524bec86f67dac5537cd81802e8",
+      "stories": []
+    },
+    {
+      "name": "Input",
+      "group": "general",
+      "srcSha": null,
+      "sourceKey": "99e7ba31498a25a0",
+      "cfgSlice": "5ff899b099eb6923833804cda955efdd69101524bec86f67dac5537cd81802e8",
+      "stories": []
+    },
+    {
+      "name": "InstallmentStatusBadge",
+      "group": "badges",
+      "srcSha": null,
+      "sourceKey": "a1891bcde8d57eee",
+      "cfgSlice": "5ff899b099eb6923833804cda955efdd69101524bec86f67dac5537cd81802e8",
+      "stories": []
+    },
+    {
+      "name": "LoginForm",
+      "group": "forms",
+      "srcSha": null,
+      "sourceKey": "07a0a309c6c79960",
+      "cfgSlice": "5ff899b099eb6923833804cda955efdd69101524bec86f67dac5537cd81802e8",
+      "stories": []
+    },
+    {
+      "name": "LogoutButton",
+      "group": "layout",
+      "srcSha": null,
+      "sourceKey": "be3518cdf70cc08d",
+      "cfgSlice": "5ff899b099eb6923833804cda955efdd69101524bec86f67dac5537cd81802e8",
+      "stories": []
+    },
+    {
+      "name": "MaskedField",
+      "group": "pii",
+      "srcSha": null,
+      "sourceKey": "99387657638bdf48",
+      "cfgSlice": "5ff899b099eb6923833804cda955efdd69101524bec86f67dac5537cd81802e8",
+      "stories": []
+    },
+    {
+      "name": "Modal",
+      "group": "general",
+      "srcSha": null,
+      "sourceKey": "bad182e9d9f4ceaf",
+      "cfgSlice": "5ff899b099eb6923833804cda955efdd69101524bec86f67dac5537cd81802e8",
+      "stories": []
+    },
+    {
+      "name": "Money",
+      "group": "general",
+      "srcSha": null,
+      "sourceKey": "945b47136050e3eb",
+      "cfgSlice": "5ff899b099eb6923833804cda955efdd69101524bec86f67dac5537cd81802e8",
+      "stories": []
+    },
+    {
+      "name": "MonthlyTrendsChart",
+      "group": "dashboard",
+      "srcSha": null,
+      "sourceKey": "93f41ef3a403ffe3",
+      "cfgSlice": "5ff899b099eb6923833804cda955efdd69101524bec86f67dac5537cd81802e8",
+      "stories": []
+    },
+    {
+      "name": "OnboardingStatusBadge",
+      "group": "badges",
+      "srcSha": null,
+      "sourceKey": "8a3687cc06f93692",
+      "cfgSlice": "5ff899b099eb6923833804cda955efdd69101524bec86f67dac5537cd81802e8",
+      "stories": []
+    },
+    {
+      "name": "PaymentRemindersBanner",
+      "group": "dashboard",
+      "srcSha": null,
+      "sourceKey": "ef6a69c65aa5fc14",
+      "cfgSlice": "5ff899b099eb6923833804cda955efdd69101524bec86f67dac5537cd81802e8",
+      "stories": []
+    },
+    {
+      "name": "PaymentStatusBadge",
+      "group": "badges",
+      "srcSha": null,
+      "sourceKey": "d5ceeb99a9198eb3",
+      "cfgSlice": "5ff899b099eb6923833804cda955efdd69101524bec86f67dac5537cd81802e8",
+      "stories": []
+    },
+    {
+      "name": "PolicyStatusBadge",
+      "group": "badges",
+      "srcSha": null,
+      "sourceKey": "a6214a69446e4a0b",
+      "cfgSlice": "5ff899b099eb6923833804cda955efdd69101524bec86f67dac5537cd81802e8",
+      "stories": []
+    },
+    {
+      "name": "ReminderStatusBadge",
+      "group": "badges",
+      "srcSha": null,
+      "sourceKey": "34488918256f5cb6",
+      "cfgSlice": "5ff899b099eb6923833804cda955efdd69101524bec86f67dac5537cd81802e8",
+      "stories": []
+    },
+    {
+      "name": "SettlementPayoutStatusBadge",
+      "group": "badges",
+      "srcSha": null,
+      "sourceKey": "bdc08ee72cd8aa93",
+      "cfgSlice": "5ff899b099eb6923833804cda955efdd69101524bec86f67dac5537cd81802e8",
+      "stories": []
+    },
+    {
+      "name": "StatCard",
+      "group": "dashboard",
+      "srcSha": null,
+      "sourceKey": "60425dc4501e0b6b",
+      "cfgSlice": "5ff899b099eb6923833804cda955efdd69101524bec86f67dac5537cd81802e8",
+      "stories": []
+    },
+    {
+      "name": "StateDiff",
+      "group": "audit",
+      "srcSha": null,
+      "sourceKey": "f4833bb56f106b10",
+      "cfgSlice": "5ff899b099eb6923833804cda955efdd69101524bec86f67dac5537cd81802e8",
+      "stories": []
+    },
+    {
+      "name": "Table",
+      "group": "general",
+      "srcSha": null,
+      "sourceKey": "ac0d085344a7a2c2",
+      "cfgSlice": "5ff899b099eb6923833804cda955efdd69101524bec86f67dac5537cd81802e8",
+      "stories": []
+    },
+    {
+      "name": "TableBody",
+      "group": "general",
+      "srcSha": null,
+      "sourceKey": "b4a9cd696a0b92f1",
+      "cfgSlice": "5ff899b099eb6923833804cda955efdd69101524bec86f67dac5537cd81802e8",
+      "stories": []
+    },
+    {
+      "name": "TableCell",
+      "group": "general",
+      "srcSha": null,
+      "sourceKey": "02644e51cddee224",
+      "cfgSlice": "5ff899b099eb6923833804cda955efdd69101524bec86f67dac5537cd81802e8",
+      "stories": []
+    },
+    {
+      "name": "TableHead",
+      "group": "general",
+      "srcSha": null,
+      "sourceKey": "9d10ac16edc51b42",
+      "cfgSlice": "5ff899b099eb6923833804cda955efdd69101524bec86f67dac5537cd81802e8",
+      "stories": []
+    },
+    {
+      "name": "TableHeaderCell",
+      "group": "general",
+      "srcSha": null,
+      "sourceKey": "339b12959c305bff",
+      "cfgSlice": "5ff899b099eb6923833804cda955efdd69101524bec86f67dac5537cd81802e8",
+      "stories": []
+    },
+    {
+      "name": "TableRow",
+      "group": "general",
+      "srcSha": null,
+      "sourceKey": "82de5e43acaec8a8",
+      "cfgSlice": "5ff899b099eb6923833804cda955efdd69101524bec86f67dac5537cd81802e8",
+      "stories": []
+    },
+    {
+      "name": "Textarea",
+      "group": "general",
+      "srcSha": null,
+      "sourceKey": "b807921333723559",
+      "cfgSlice": "5ff899b099eb6923833804cda955efdd69101524bec86f67dac5537cd81802e8",
+      "stories": []
+    },
+    {
+      "name": "Topbar",
+      "group": "layout",
+      "srcSha": null,
+      "sourceKey": "6e7f63b798b0ab98",
+      "cfgSlice": "5ff899b099eb6923833804cda955efdd69101524bec86f67dac5537cd81802e8",
+      "stories": []
+    }
+  ]
+}
