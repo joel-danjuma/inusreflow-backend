@@ -13,9 +13,9 @@ export default async function LoginPage({
   return (
     <div className="flex min-h-screen bg-neutral-secondary-soft">
       <aside className="hidden flex-1 flex-col justify-between bg-dark p-14 text-white lg:flex">
-        <span className="font-display text-2xl font-semibold tracking-tight">
+        <Link href="/" className="font-display text-2xl font-semibold tracking-tight">
           Insure<span className="text-fg-brand">flow</span>
-        </span>
+        </Link>
         <div>
           <h1 className="font-display max-w-[460px] text-[40px] leading-[1.15] font-bold tracking-[-0.5px] text-white">
             Premium collection &amp; settlement, reconciled.
